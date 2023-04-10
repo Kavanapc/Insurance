@@ -23,8 +23,19 @@ pipeline{
      steps{
        sh'docker build -t kavanapc/insurance_project .'
           }
-       }
+        }
+   stage('docker login'){
+     steps{
+       withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASS', usernameVariable: 'DOCKER_HUB')]) {
+     sh'docker login -u ${env.DOCKER_HUB} -p ${env.PASS}'
 }
 }
-
+}
+   stage('pushing docker image'){
+     steps{
+       sh 'docker push kavanapc/insurance_project:latest'
+           }
+    }
+}
+}
 
