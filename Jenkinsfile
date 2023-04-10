@@ -26,8 +26,8 @@ pipeline{
         }
    stage('docker login'){
      steps{
-     withCredentials([string(credentialsId: 'dockerhub', variable: 'dock-password')]) {
-    sh "${dockerCMD} login -u KavanaPC -p ${dock-password}"
+     withCredentials([usernamePassword(credentialsId: 'Dockerlogin', passwordVariable: 'password', usernameVariable: 'docker')]) {
+    sh "docker login -u ${env.docker} -p ${env.password}"
 }
 }
 }
