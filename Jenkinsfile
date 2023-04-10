@@ -8,7 +8,12 @@ pipeline{
      steps{
        git branch: 'master',url:"https://github.com/Kavanapc/Insurance.git"
           }
-      }
+        }
+   stage('package the application'){
+     steps{
+       sh'mvn clean package'
+          }
+         }
 }
 }
 
