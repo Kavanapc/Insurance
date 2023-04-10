@@ -1,9 +1,9 @@
-Pipeline {
+pipeline{
  agent any
- tools {
+ tools{
    maven 'MAVEN_HOME'
       }
- Stages {
+ Stages{
    stage ('checkout the souce code') {
      steps{
        git branch: 'master',url:"https://github.com/Kavanapc/Insurance.git"
