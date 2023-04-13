@@ -14,5 +14,5 @@ tasks:
     command: sudo systemctl start docker
     become: yes
     become_user: root
-    -name: deploy the image from docker-hub and run as container
+  - name: deploy the image from docker-hub and run as container
     command: docker run -itd -p8050:8081 kavanapc/insurance_project:latest
