@@ -36,6 +36,10 @@ pipeline{
        sh 'docker push kavanapc/insurance_project:latest'
            }
     }
+   stage('Deploy application using ansible')
+     steps{
+       ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, inventory: '/etc/ansible/hosts', playbook: 'deploy.yml'
+       }
 }
 }
 
